@@ -61,17 +61,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    // Hilt dependencies with exclusions
-    implementation(libs.hilt.android) {
-        exclude(group = "com.squareup", module = "javapoet")
-    }
-    kapt(libs.hilt.android.compiler) {
-        exclude(group = "com.squareup", module = "javapoet")
-    }
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-
-    // Explicitly add compatible javapoet version
-    implementation("com.squareup:javapoet:1.13.0")
+    // Hilt dependencies
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose.v100)
 
     // Navigation dependencies
     implementation(libs.androidx.navigation.runtime.ktx)
@@ -81,7 +74,7 @@ dependencies {
 
     // Room dependencies
     implementation(libs.room.runtime)
-   annotationProcessor(libs.room.compiler) // Change from annotationProcessor to kapt
+    annotationProcessor(libs.room.compiler)
     implementation(libs.room.ktx)
 
     // Retrofit dependencies
